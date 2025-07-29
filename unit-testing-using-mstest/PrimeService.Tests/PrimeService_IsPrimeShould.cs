@@ -1,10 +1,24 @@
-﻿namespace PrimeService.Tests;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Prime.Services;
 
-[TestClass]
-public sealed class Test1
+namespace Prime.UnitTests.Services
 {
-    [TestMethod]
-    public void TestMethod1()
+    [TestClass]
+    public class PrimeService_IsPrimeShould
     {
+        private readonly PrimeService _primeService;
+
+        public PrimeService_IsPrimeShould()
+        {
+            _primeService = new PrimeService();
+        }
+
+        [TestMethod]
+        public void IsPrime_InputIs1_ReturnFalse()
+        {
+            bool result = _primeService.IsPrime(1);
+
+            Assert.IsFalse(result, "1 should not be prime");
+        }
     }
 }
